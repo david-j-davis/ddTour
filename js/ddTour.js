@@ -30,10 +30,10 @@ function ddTour() {
 		$('html,body').animate({scrollTop: $('.ddTour').eq(nextItem).offset().top-100});
 		//Apply "End" to last button
 		if (nextItem === (index-1)) {
-			$('.ddTour button').html('End');
+			setTimeout(function() {
+      		$('.ddTour button').html('End');
+			}, 400);
 		}
 		return false; //Prevent Default and event bubbling.
-		
 	});
-
 }
