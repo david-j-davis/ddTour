@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -10,16 +11,65 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="//normalize-css.googlecode.com/svn/trunk/normalize.css">
-        <link rel="stylesheet" href="../assets/stylesheets/app-sub-pages.css" />
-        <script src="../assets/javascripts/vendor/modernizr.js"></script>
-        
+        <style>
+        section.main {
+            width: 60%;
+            margin:0 auto;
+        }
+        .ddTour {
+            position: absolute;
+        }
+        .ddtextbox {
+            width: 300px;
+            height: auto;
+            top: 50px;
+            margin: 0;
+            padding: 1em;
+            position: absolute;
+            z-index: 5000;
+            background: #16766b;
+            color: #e6e6e6;
+            font-family: "Roboto",Arial,sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+        }
+        .ddtextbox:before {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 20px;
+            border-bottom: 20px solid #16766b;
+            border-bottom-color: #16766b;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+        }
+        .ddtextbox button {
+            width: 100%;
+        }
+        .ddTour span {
+            display: none;
+        }
+        button, .button {
+            overflow: hidden;
+            position: relative;
+            padding: 2em 3em;
+            background: #333;
+            display: inline-block;
+            border: 0;
+            cursor: pointer;
+            font-family: "Open Sans",sans-serif;
+            font-weight: 300;
+            font-style: normal;
+            color: #b9b9b9;
+            text-transform: uppercase;
+        }
+        </style>
+
     </head>
     <body>
         <!--[if lte IE 8]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <h2 class="forkTitle"><a href="https://github.com/david-j-davis/ddTour" target="_blank" alt="View source on github."><img data-src='../assets/images/fork.svg' class='iconic'>ddTour developed for personal projects.</a></h2>
-
         <section class="main">
                 <h3>Page Tour with "Bullshit Ipsum":</h3>
                 <p><strong class="ddTour"><span>This is a tour solution to escort someone through your page.</span></strong> standards-compliant systems seize partnerships; create clicks-and-mortar e-commerce widgets wireless technologies incubate end-to-end strategize revolutionary synergies infomediaries synergies communities. Virtual synergies bricks-and-clicks, "envisioneer turn-key evolve beta-test morph drive, reinvent cross-platform." Folksonomies user-centric scale models systems social mission-critical, deliver sexy intuitive bandwidth seize virtual communities magnetic. Synergies blogging empower, widgets sticky convergence partnerships post metrics reintermediate embedded intuitive e-business user-contributed e-commerce. Mindshare A-list implement embedded; transparent A-list aggregate--communities, "dynamic synthesize distributed mission-critical, out-of-the-box embedded e-business long-tail."</p>
@@ -60,71 +110,16 @@
                    <li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li>
                 </ul>
 
-                
+
         </section>
-        <pre class="codeReveal"><code>
-
-            function ddTour() {
-
-                //Add next buttons
-                $('.ddTour span').append('<button style="margin-top:1em;margin-bottom:0;">Next</button>');
-                //Add first textbox
-                $('.ddTour').each(function(){
-                    $(this).prepend('<div class="ddtextbox"></div>');
-                    var description = $('span',this).html();
-                    $('.ddtextbox',this).append().html(description);
-
-                });
-
-                //Show the first textbox and hide the rest
-                $('.ddtextbox:gt(0)').hide();
-                //Get length of my textboxes
-                index = $('.ddTour').length;
-                nextItem = 0;
-                
-                //Add next action when button clicks
-                $('.ddtextbox button').on('click', function(e){
-                    e.preventDefault();
-                    nextItem++;
-                    //Fade out current div
-                    $(this).parents('.ddtextbox').fadeOut();
-                    //Fade the next div in
-                    $('.ddtextbox').eq(nextItem).fadeIn();
-                    //scroll to next div and fadeIn
-                    $('html,body').animate({scrollTop: $('.ddTour').eq(nextItem).offset().top-100});
-                    //Apply "End" to last button
-                    if (nextItem === (index-1)) {
-                        setTimeout(function() {
-                        $('.ddTour button').html('End');
-                        }, 400);
-                    }
-                    return false; //Prevent Default and event bubbling.
-                });
-            }
-        </code></pre>
-        <h3 class="codeTitle"><a href="">Click to view jQuery code</a></h3>
-
 
         <script src="//code.jquery.com/jquery-latest.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-        <script src="js/min/plugins-min.js"></script>
         <script src="js/ddTour.js"></script>
-        <script src="../assets/javascripts/subpagescripts.js"></script>
-        <script src="../assets/javascripts/iconic.min.js"></script>
         <script>
         $(document).ready(function(){
           ddTour();
         });
-        </script>
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-35054083-1');ga('send','pageview');
         </script>
     </body>
 </html>
