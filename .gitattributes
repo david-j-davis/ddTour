@@ -1,3 +1,2 @@
-index.html linguist-vendored
-README.md linguist-vendored
-js/ddTour.js linguist-documentation
+js linguist-vendored
+index.html linguist-language=JavaScript
